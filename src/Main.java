@@ -42,7 +42,8 @@ public class Main {
         System.out.println("-");
         System.out.println("Conteúdos Inscritos Camila:" + devCamila.getConteudosInscritos());
         System.out.println("Conteúdos Concluídos Camila:" + devCamila.getConteudosConcluidos());
-        System.out.println("XP:" + devCamila.calcularTotalXp());
+        devCamila.calcularTotalXp();
+        System.out.println("XP:" + devCamila.getXpDev());
 
         System.out.println("-------");
 
@@ -56,7 +57,10 @@ public class Main {
         System.out.println("-");
         System.out.println("Conteúdos Inscritos João:" + devJoao.getConteudosInscritos());
         System.out.println("Conteúdos Concluidos João:" + devJoao.getConteudosConcluidos());
-        System.out.println("XP:" + devJoao.calcularTotalXp());
+        devJoao.calcularTotalXp();
+        System.out.println("XP:" + devJoao.getXpDev());
+
+        System.out.println("ranking"+ bootcamp.ranking());
 
     }
 

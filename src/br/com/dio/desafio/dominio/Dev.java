@@ -2,10 +2,11 @@ package br.com.dio.desafio.dominio;
 
 import java.util.*;
 
-public class Dev {
+public class Dev implements Comparator<Double>{
     private String nome;
     private Set<Conteudo> conteudosInscritos = new LinkedHashSet<>();
     private Set<Conteudo> conteudosConcluidos = new LinkedHashSet<>();
+    private double xpDev;
 
     public void inscreverBootcamp(Bootcamp bootcamp){
         this.conteudosInscritos.addAll(bootcamp.getConteudos());
@@ -22,21 +23,32 @@ public class Dev {
         }
     }
 
-    public double calcularTotalXp() {
-        Iterator<Conteudo> iterator = this.conteudosConcluidos.iterator();
-        double soma = 0;
-        while(iterator.hasNext()){
-            double next = iterator.next().calcularXp();
-            soma += next;
-        }
-        return soma;
+    public void calcularTotalXp() {
+//        Iterator<Conteudo> iterator = this.conteudosConcluidos.iterator();
+//        double soma = 0;
+//        while(iterator.hasNext()){
+//            double next = iterator.next().calcularXp();
+//            soma += next;
+//        }
+//        return soma;
 
-        /*return this.conteudosConcluidos
+        xpDev = this.conteudosConcluidos
                 .stream()
                 .mapToDouble(Conteudo::calcularXp)
-                .sum();*/
+                .sum();
     }
 
+    @Override
+    public String toString() {
+        return
+                ", nome='" + nome + '\'' +
+                ", xpDev=" + xpDev;
+
+    }
+
+    public double getXpDev() {
+        return xpDev;
+    }
 
     public String getNome() {
         return nome;
@@ -63,6 +75,11 @@ public class Dev {
     }
 
     @Override
+    public int compare(Double o1, Double o2) {
+        return o2.compareTo(o1);
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
@@ -74,4 +91,5 @@ public class Dev {
     public int hashCode() {
         return Objects.hash(nome, conteudosInscritos, conteudosConcluidos);
     }
+
 }
